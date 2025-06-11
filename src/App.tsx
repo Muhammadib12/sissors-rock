@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 
 const emojiMap: Record<string, string> = {
   s: '✂️',
@@ -29,7 +29,7 @@ function App() {
   const [Cchois, setCchois] = useState<string>('');
   const [whoWin, setWhoWin] = useState<string>('');
   const [showVictoryModal, setShowVictoryModal] = useState<boolean>(false);
-  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
+  
   const [countResult, setCountResult] = useState({
     user: 0,
     computer: 0
@@ -59,7 +59,7 @@ function App() {
       setShowVictoryModal(true);
   
       const audio = playSound(isUserWin);
-      setCurrentAudio(audio);
+      
   
       if (audio) {
         const handleEnded = () => {
@@ -69,7 +69,7 @@ function App() {
           setChois('');
           setWchois('');
           setCchois('');
-          setCurrentAudio(null);
+      
         };
   
         audio.addEventListener('ended', handleEnded);
@@ -280,20 +280,21 @@ function App() {
         
       </div>
       
-      <style jsx>{`
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-        
-        .animate-spin-slow {
-          animation: spin-slow 3s linear infinite;
-        }
-      `}</style>
+      <style>{`
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+  }
+`}</style>
+
     </div>
   )
 }
